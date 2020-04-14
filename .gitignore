@@ -1,0 +1,11 @@
+# IntelliJ:
+.idea/
+*.iml
+*.log
+
+# Maven:
+.idea
+target
+
+MedicalCenter.iml
+
