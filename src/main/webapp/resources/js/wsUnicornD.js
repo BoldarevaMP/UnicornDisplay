@@ -3,6 +3,14 @@ function reRenderDisplay(e) {
     for (var i = 0; i < e.length; i++) {
         var eventObject = e[i];
 
+        if (eventObject.dosage == null){
+            eventObject.dosage = '';
+        }
+
+        if (eventObject.comment == null){
+            eventObject.comment = '';
+        }
+
         $('.DISPLAY').find('tbody').append(
             '<tr>' +
             '<td>' + eventObject.date + '</td>' +
