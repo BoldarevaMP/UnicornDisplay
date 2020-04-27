@@ -1,7 +1,5 @@
-package unicorn.backingBean;
+package unicorn.bean;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.apache.log4j.Logger;
 import org.richfaces.application.push.MessageException;
 import org.richfaces.application.push.TopicKey;
@@ -26,18 +24,14 @@ public class DisplayBeanImpl implements DisplayBean {
 
     private static final Logger logger = Logger.getLogger(DisplayBeanImpl.class);
 
-    @Inject
-    private EventService eventService;
-
-    public String getCDI_PUSH_TOPIC() {
-        return CDI_PUSH_TOPIC;
-    }
-
     private List<EventDTO> eventDTOS;
 
     private final String CDI_PUSH_TOPIC = "pushCdi";
     private TopicKey topicKey = new TopicKey(CDI_PUSH_TOPIC);
     private TopicsContext topicsContext;
+
+    @Inject
+    private EventService eventService;
 
     @PostConstruct
     public void initDisplay() {
@@ -52,20 +46,27 @@ public class DisplayBeanImpl implements DisplayBean {
     @Override
     public void updateEventList(List<EventDTO> eventDTOList) {
         eventDTOS = eventDTOList;
-        logger.info("Storage Successfully Updated!");
+        logger.info("List of events is successfully updated");
         sendUpdate();
+    }
+
+    public List<EventDTO> getEventDTOS() {
+        return eventDTOS;
+    }
+
+    public String getCdiPushTopic() {
+        return CDI_PUSH_TOPIC;
     }
 
     private void sendUpdate() {
         try {
             topicsContext.publish(topicKey, eventDTOS);
         } catch (MessageException ex) {
-            logger.debug("List is not updated!");
+            logger.error("Exception: List is not updated");
         }
     }
 
-    public List<EventDTO> getEventDTOS() {
-        return eventDTOS;
-    }
+
+
 }
 

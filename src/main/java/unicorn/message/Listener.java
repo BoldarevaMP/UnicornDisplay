@@ -2,7 +2,7 @@ package unicorn.message;
 
 
 import org.apache.log4j.Logger;
-import unicorn.backingBean.DisplayBean;
+import unicorn.bean.DisplayBean;
 import unicorn.service.EventService;
 
 import javax.ejb.ActivationConfigProperty;
@@ -32,7 +32,7 @@ public class Listener implements MessageListener {
                 displayBean.updateEventList(eventService.getEvents());
             }
         } catch (JMSException e) {
-            logger.error("Catch Exception");
+            logger.error("Exception while reading message");
         }
     }
 }

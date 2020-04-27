@@ -1,4 +1,4 @@
-package unicorn.webService;
+package unicorn.service;
 
 import unicorn.dto.EventDTO;
 

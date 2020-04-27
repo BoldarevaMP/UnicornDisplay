@@ -1,4 +1,4 @@
-package unicorn.webService;
+package unicorn.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,7 +9,7 @@ import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
 import org.apache.log4j.Logger;
-import unicorn.backingBean.DisplayBeanImpl;
+import unicorn.bean.DisplayBeanImpl;
 import unicorn.dto.EventDTO;
 
 import javax.ejb.Singleton;
@@ -22,7 +22,7 @@ import java.util.List;
 @ApplicationScoped
 public class WebServiceImpl implements WebService {
     private static final Logger logger = Logger.getLogger(DisplayBeanImpl.class);
-    private final String GET_ALL_URL = "http://localhost:8080/unicorn/rest/events-today";
+    private final String GET_ALL_EVENTS_URL = "http://localhost:8080/unicorn/rest/events-today";
     private final int STATUS_OK = 200;
     private ObjectMapper mapper = new ObjectMapper();
 
@@ -36,7 +36,7 @@ public class WebServiceImpl implements WebService {
                 entityList = mapper.readValue(response.getEntity(String.class), new TypeReference<List<EventDTO>>() {});
             }
         } catch (Exception ex) {
-            logger.info("Can't convert response to list of events");
+            logger.error("Exception: Can't convert response to list of events");
         }
         return entityList;
     }
@@ -46,7 +46,7 @@ public class WebServiceImpl implements WebService {
         clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
         Client client = Client.create(clientConfig);
 
-        return client.resource(GET_ALL_URL);
+        return client.resource(GET_ALL_EVENTS_URL);
 
     }
 

@@ -152,7 +152,7 @@
 
 
   <build>
-    <finalName>UnicornDisplay</finalName>
+    <finalName>unicorn-display</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

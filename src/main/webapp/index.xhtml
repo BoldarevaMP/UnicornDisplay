@@ -55,7 +55,7 @@
 
 
 <h:form id="form">
-    <a4j:push address="#{display.CDI_PUSH_TOPIC}"
+    <a4j:push address="#{display.cdiPushTopic}"
               onerror="console.log(event.rf.data)"
               ondataavailable="console.log(event.rf.data);reRenderDisplay(event.rf.data); ">
     </a4j:push>

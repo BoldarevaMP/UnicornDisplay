@@ -1,4 +1,4 @@
-package unicorn.backingBean;
+package unicorn.bean;
 
 import unicorn.dto.EventDTO;
 

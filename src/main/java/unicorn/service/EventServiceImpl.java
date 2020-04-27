@@ -1,7 +1,6 @@
 package unicorn.service;
 
 import unicorn.dto.EventDTO;
-import unicorn.webService.WebService;
 
 import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
