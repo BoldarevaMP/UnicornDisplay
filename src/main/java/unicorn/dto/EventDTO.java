@@ -3,15 +3,13 @@ package unicorn.dto;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
 @Getter
 @Setter
 public class EventDTO {
 
     private Integer id;
 
-    private String name;
+    private String patientLastName;
 
     private String treatmentName;
 
