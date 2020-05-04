@@ -18,6 +18,10 @@ import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementation of web service
+ */
+
 @Singleton
 @ApplicationScoped
 public class WebServiceImpl implements WebService {
@@ -26,6 +30,12 @@ public class WebServiceImpl implements WebService {
     private final int STATUS_OK = 200;
     private ObjectMapper mapper = new ObjectMapper();
 
+    /**
+     * Gets list of events from main app (Unicorn) via REST
+     *
+     * @return l
+     */
+
     @Override
     public List<EventDTO> getEvents() {
         WebResource webResource = getWebResource();
@@ -33,7 +43,8 @@ public class WebServiceImpl implements WebService {
         List<EventDTO> entityList = new ArrayList<>();
         try {
             if (response.getStatus() == STATUS_OK) {
-                entityList = mapper.readValue(response.getEntity(String.class), new TypeReference<List<EventDTO>>() {});
+                entityList = mapper.readValue(response.getEntity(String.class), new TypeReference<List<EventDTO>>() {
+                });
             }
         } catch (Exception ex) {
             logger.error("Exception: Can't convert response to list of events");

@@ -12,6 +12,10 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 
+/**
+ * Asynchronous event handler for messages
+ */
+
 @MessageDriven(name = "Listener", activationConfig = {
         @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
         @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "java:/jms/queue/DLQ"),
@@ -24,6 +28,12 @@ public class Listener implements MessageListener {
     private DisplayBean displayBean;
     @Inject
     private EventService eventService;
+
+    /**
+     * Retrieves the payload from the message
+     *
+     * @param message
+     */
 
     @Override
     public void onMessage(Message message) {

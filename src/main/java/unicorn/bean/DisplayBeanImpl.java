@@ -33,6 +33,10 @@ public class DisplayBeanImpl implements DisplayBean {
     @Inject
     private EventService eventService;
 
+    /**
+     * Initializes data when the app is loading
+     */
+
     @PostConstruct
     public void initDisplay() {
         eventDTOS = new ArrayList<>();
@@ -42,6 +46,12 @@ public class DisplayBeanImpl implements DisplayBean {
         topicsContext = TopicsContext.lookup();
         topicsContext.getOrCreateTopic(topicKey);
     }
+
+    /**
+     * Updates data in list of events
+     *
+     * @param eventDTOList
+     */
 
     @Override
     public void updateEventList(List<EventDTO> eventDTOList) {
@@ -65,7 +75,6 @@ public class DisplayBeanImpl implements DisplayBean {
             logger.error("Exception: List is not updated");
         }
     }
-
 
 
 }

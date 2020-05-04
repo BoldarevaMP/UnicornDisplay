@@ -3,6 +3,10 @@ package unicorn.dto;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Event DTO class
+ */
+
 @Getter
 @Setter
 public class EventDTO {

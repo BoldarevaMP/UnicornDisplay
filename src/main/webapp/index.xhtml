@@ -40,7 +40,7 @@
                 <ui:repeat var="e"  value="#{display.eventDTOS}" >
                     <tr>
                         <td>#{e.date}</td>
-                        <td>#{e.name}</td>
+                        <td>#{e.patientLastName}</td>
                         <td>#{e.treatmentName}</td>
                         <td>#{e.dosage} #{e.dosageForm}</td>
                         <td>#{e.status}</td>
@@ -63,5 +63,5 @@
 
 <h:outputScript library="js" name="jquery-3.2.1.min.js" target="body"/>
 <h:outputScript library="js" name="bootstrap.min.js" target="body"/>
-<h:outputScript library="js" name="wsUnicornD.js" target="body"/>
+<h:outputScript library="js" name="wsUnicornDisplay.js" target="body"/>
 </html>
